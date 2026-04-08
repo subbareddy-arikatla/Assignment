@@ -40,7 +40,63 @@ def find_max_value(numbers):
         index += 1
 
     return max_value
+def print_sequence(data):
+    try:
+        if not data:
+            print("Error: The list is empty.")
+            return
+        
+        print("Sequence:")
+        for i, value in enumerate(data):
+            print(f"Index {i}: {value}")
+    
+    except Exception as e:
+        print(f"Unexpected error in print_sequence: {e}")
 
+
+def process_data(data):
+    try:
+        if not data:
+            raise ValueError("Input list is empty.")
+
+        processed = []
+
+        for item in data:
+            # Check if value is numeric
+            if not isinstance(item, (int, float)):
+                raise TypeError(f"Non-numeric value found: {item}")
+            
+            # Example processing: square the number
+            processed.append(item ** 2)
+
+        return processed
+
+    except ValueError as ve:
+        print(f"Value Error: {ve}")
+    except TypeError as te:
+        print(f"Type Error: {te}")
+    except Exception as e:
+        print(f"Unexpected error in process_data: {e}")
+
+    return None
+
+
+# ✅ Testing the functions
+if __name__ == "__main__":
+    test_cases = [
+        [1, 2, 3, 4],
+        [5, "a", 7],     # contains non-numeric
+        [],              # empty list
+        [2.5, 3.1, 4.8]  # float values
+    ]
+
+    for i, test in enumerate(test_cases):
+        print(f"\nTest Case {i+1}: {test}")
+        
+        result = process_data(test)
+        
+        if result is not None:
+            print_sequence(result)
 
 # ---------------------- TEST CASES ----------------------
 
