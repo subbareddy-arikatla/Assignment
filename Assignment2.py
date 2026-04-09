@@ -9,8 +9,12 @@ def swap_temp(a, b):
 # Method 2: Modified arithmetic approach (SAFE alternative)
 # Instead of risking overflow, fallback to temp method
 def swap_arithmetic_safe(a, b):
+    a = a + b 
+    b = a - b
+    a = a - b 
+    return a,b
     # Avoid using a = a + b for large numbers
-    return swap_temp(a, b)
+    
 
 # Method 3: Using bitwise XOR (SAFE for integers)
 def swap_xor(a, b):
